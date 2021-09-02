@@ -1,6 +1,5 @@
 <template>
   <div>
-      <NuxtLink to="/">Home</NuxtLink>
     <div style="display: flex">
       <img
         v-for="image in home.images"
