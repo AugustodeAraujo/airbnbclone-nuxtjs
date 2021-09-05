@@ -1,6 +1,7 @@
 export default function(context, inject) {
   let mapLoaded = false
   let mapWaiting = null
+  const apikey = 'AIzaSyAufwOvmAmxDis1T9vFagQfJyr5RyXC02Q'
 
   addScript()
   inject('maps', {
@@ -9,8 +10,7 @@ export default function(context, inject) {
 
   function addScript() {
     const script = document.createElement('script')
-    script.src =
-      'https://maps.googleapis.com/maps/api/js?key=AIzaSyAufwOvmAmxDis1T9vFagQfJyr5RyXC02Q&libraries=places$callback=initMap'
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apikey}&libraries=places&callback=initMap`
     script.async = true
     window.initMap = initMap
     document.head.appendChild(script)
@@ -26,11 +26,8 @@ export default function(context, inject) {
   }
 
   function showMap(canvas, lat, lng) {
-    if (mapLoaded) {
-      renderMap(canvas, lat, lng)
-    } else {
-      mapWaiting = { canvas, lat, lng }
-    }
+    if (mapLoaded) renderMap(canvas, lat, lng)
+    else mapWaiting = { canvas, lat, lng }
   }
   function renderMap(canvas, lat, lng) {
     console.log('mounted')
