@@ -3,18 +3,21 @@ export default {
   head: {
     titleTemplate: 'Mastering Nuxt: %s',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'en'
     },
     bodyAttrs: {
-      class: ['my-style'],
+      class: ['my-style']
     },
     meta: [
       {
-        charset: 'utf-8',
-      },
-    ],
+        charset: 'utf-8'
+      }
+    ]
   },
   router: {
-    prefetchlinks: false,
+    prefetchlinks: false
   },
+  plugins: ['~/plugins/maps.client.js']
 }
+
+
