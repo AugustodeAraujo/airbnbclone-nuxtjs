@@ -1,5 +1,12 @@
 [
   {
+    "name": "search",
+    "path": "/search",
+    "component": "E:\\\\Documentos\\\\Masterclass - Nuxt\\\\pages\\\\search.vue",
+    "chunkName": "pages/search",
+    "_name": "_842d930c"
+  },
+  {
     "name": "home-id",
     "path": "/home/:id?",
     "component": "E:\\\\Documentos\\\\Masterclass - Nuxt\\\\pages\\\\home\\\\_id.vue",
