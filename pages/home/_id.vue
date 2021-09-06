@@ -20,6 +20,15 @@
     {{ home.bathrooms }} bath, <br />
     {{ home.description }}
     <div style="height:800px; width:800px" ref="map"></div>
+    <div v-for="review in reviews" :key="review.objectID">
+      <img :src="review.reviewer.image" /><br />
+      {{ review.reviewer.name }}<br />
+      {{ review.comment }}<br />
+    </div>
+    <img :src="user.image" alt="" />
+    {{ user.name }} <br />
+    {{ user.reviewCount }} <br />
+    {{ user.description }} <br />
   </div>
 </template>
 
@@ -38,10 +47,24 @@ export default {
       this.home._geoloc.lng
     )
   },
-  async asyncData({ params, $dataApi }) {
-    const home = await $dataApi.getHome(params.id)
+  async asyncData({ params, $dataApi, error }) {
+
+    const responses = await Promise.all([
+      $dataApi.getHome(params.id),
+      $dataApi.getReviewsByHomeId(params.id),
+      $dataApi.getUserByHomeId(params.id)
+    ])
+
+    const badResponse = responses.find((responses) => !responses.ok)
+    if(badResponse)return error({
+        statusCode: badResponse.status,
+        message: badResponse.statusText
+      })
+
     return {
-      home
+      home: responses[0].json,
+      reviews: responses[1].json.hits,
+      user:responses[2].json.hits[0]
     }
   }
 }
