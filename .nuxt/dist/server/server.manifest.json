@@ -1,0 +1,19 @@
+{
+  "entry": "server.js",
+  "files": {
+    "components/home-card.js": "components/home-card.js",
+    "components/home-row.js": "components/home-row.js",
+    "pages/home/_id.js": "pages/home/_id.js",
+    "pages/index.js": "pages/index.js",
+    "pages/search.js": "pages/search.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "components/home-card.js": "components/home-card.js.map",
+    "components/home-row.js": "components/home-row.js.map",
+    "pages/home/_id.js": "pages/home/_id.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "pages/search.js": "pages/search.js.map",
+    "server.js": "server.js.map"
+  }
+}

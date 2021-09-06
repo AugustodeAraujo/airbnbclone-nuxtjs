@@ -1,4 +1,5 @@
-export { default as HomeCard } from '../..\\components\\HomeCard.vue'
+export const HomeCard = () => import('../..\\components\\HomeCard.vue' /* webpackChunkName: "components/home-card" */).then(c => wrapFunctional(c.default || c))
+export const HomeRow = () => import('../..\\components\\HomeRow.vue' /* webpackChunkName: "components/home-row" */).then(c => wrapFunctional(c.default || c))
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {
