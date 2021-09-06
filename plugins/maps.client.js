@@ -6,7 +6,8 @@ export default function(context, inject) {
 
   addScript()
   inject('maps', {
-    showMap
+    showMap,
+    makeAutoComplete
   })
 
   function addScript() {
@@ -23,6 +24,16 @@ export default function(context, inject) {
       if (typeof item.fn === 'function') {
         item.fn(...item.arguments)
       }
+    })
+  }
+
+  function makeAutoComplete(input) {
+    if (!isLoaded) {
+      waiting.push({ fn: makeAutoComplete, arguments })
+      return
+    }
+    const autoComplete = new window.google.maps.places.Autocomplete(input, {
+      types: ['(cities)']
     })
   }
 
